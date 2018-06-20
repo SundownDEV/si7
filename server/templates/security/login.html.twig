@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <title>{% block title %}Login{% endblock %}</title>
+
+    {% block stylesheets %}
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('build/css/signin.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body class="text-center">
+<form action="{{ path('security_login') }}" method="post" class="form-signin">
+
+    <h1 class="h3 mb-3 font-weight-normal">Vulcano</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+        <div class="form-label-group">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="{{ 'label.username'|trans }}" required autofocus>
+            <label for="username">{{ 'label.username'|trans }}</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'label.password'|trans }}" required>
+            <label for="password">{{ 'label.password'|trans }}</label>
+        </div>
+
+        <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'action.sign_in'|trans }}</button>
+    </form>
+</body>
+</html>
