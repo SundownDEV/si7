@@ -11,7 +11,6 @@
 
 namespace App\Security;
 
-use App\Entity\Post;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -19,10 +18,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 /**
  * It grants or denies permissions for actions related to blog posts (such as
  * showing, editing and deleting posts).
- *
- * See https://symfony.com/doc/current/security/voters.html
- *
- * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
 class PostVoter extends Voter
 {

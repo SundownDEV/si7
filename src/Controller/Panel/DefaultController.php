@@ -12,16 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Dashboard for registered users or admins
  *
- * @Route("/app", name="panel")
- * @Security("has_role('ROLE_USER') or has_role('ROLE_ADMIN')")
+ * @Route("/app", name="panel_")
  */
 class DefaultController extends AbstractController
 {
-    /*
+    /**
      * @Route("/", name="index")
      */
     public function index()
     {
-        return $this->render(':default:homepage.html.twig');
+        return $this->render('panel/index.html.twig');
     }
 }
