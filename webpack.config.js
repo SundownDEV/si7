@@ -1,4 +1,4 @@
-var Encore = require('@symfony/webpack-encore');
+let Encore = require('@symfony/webpack-encore');
 
 Encore
     .setOutputPath('public/build/')
@@ -12,12 +12,11 @@ Encore
     .enableSassLoader()
     .enableVersioning(false)
     .createSharedEntry('js/common', ['jquery'])
-    .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/landing', './assets/js/landing.js')
     .addEntry('js/login', './assets/js/login.js')
     .addEntry('js/admin', './assets/js/admin.js')
-    .addEntry('js/search', './assets/js/search.js')
-    .addStyleEntry('css/app', ['./assets/scss/app.scss'])
-    .addStyleEntry('css/signin', ['./assets/scss/signin.scss'])
+    .addStyleEntry('css/landing', ['./assets/scss/landing.scss'])
+    //.addStyleEntry('css/login', ['./assets/scss/login.scss'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
 ;
 
