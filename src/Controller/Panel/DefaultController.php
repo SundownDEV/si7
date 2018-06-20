@@ -22,6 +22,6 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        //return dashboard
+        return $this->render(':default:homepage.html.twig');
     }
 }

@@ -15,16 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DefaultController extends AbstractController
 {
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * @Route("/", name="index")
      */
     public function index()
     {
-        // return landing
+        return $this->render('default/homepage.html.twig');
     }
 }
