@@ -23,4 +23,12 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/homepage.html.twig');
     }
+
+    /**
+     * @Route("/register", name="register")
+     */
+    public function register()
+    {
+        return $this->render('default/register.html.twig');
+    }
 }
