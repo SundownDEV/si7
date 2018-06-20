@@ -11,9 +11,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Comment;
-use App\Entity\Post;
-use App\Entity\Tag;
 use App\Entity\User;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -56,7 +53,7 @@ class AppFixtures extends Fixture
         return [
             // $userData = [$fullname, $username, $password, $email, $roles];
             ['John Admin', 'admin', 'admin', 'john_admin@symfony.com', ['ROLE_ADMIN']],
-            ['John User', 'user', 'user', 'john_admin@symfony.com', ['ROLE_USER']],
+            ['John User', 'user', 'user', 'john_user@symfony.com', ['ROLE_USER']],
         ];
     }
 }
