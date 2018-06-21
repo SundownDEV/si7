@@ -39,16 +39,12 @@ class ListUsersCommand extends Command
     // a good practice is to use the 'app:' prefix to group all your custom application commands
     protected static $defaultName = 'app:list-users';
 
-    private $mailer;
-    private $emailSender;
     private $users;
 
-    public function __construct(\Swift_Mailer $mailer, $emailSender, UserRepository $users)
+    public function __construct(UserRepository $users)
     {
         parent::__construct();
 
-        $this->mailer = $mailer;
-        $this->emailSender = $emailSender;
         $this->users = $users;
     }
 
@@ -123,24 +119,5 @@ HELP
         if (null !== $email = $input->getOption('send-to')) {
             $this->sendReport($usersAsATable, $email);
         }
-    }
-
-    /**
-     * Sends the given $contents to the $recipient email address.
-     *
-     * @param string $contents
-     * @param string $recipient
-     */
-    private function sendReport($contents, $recipient)
-    {
-        // See https://symfony.com/doc/current/cookbook/email/email.html
-        $message = $this->mailer->createMessage()
-            ->setSubject(sprintf('app:list-users report (%s)', date('Y-m-d H:i:s')))
-            ->setFrom($this->emailSender)
-            ->setTo($recipient)
-            ->setBody($contents, 'text/plain')
-        ;
-
-        $this->mailer->send($message);
     }
 }
