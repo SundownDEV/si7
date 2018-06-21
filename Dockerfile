@@ -55,3 +55,6 @@ COPY ./server .
 RUN mkdir -p var/cache var/logs var/sessions \
     && composer install --prefer-dist --no-dev --no-scripts --no-progress --no-suggest --classmap-authoritative --no-interaction \
 	&& chown -R www-data var
+
+RUN bin/console doctrine:schema:update --force \
+    && bin/console assets:install
