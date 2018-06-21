@@ -9,6 +9,7 @@ Requirements
 
   * PHP 7.1.3 or higher;
   * PDO-MySQL PHP extension enabled;
+  * npm & node **>= 8**
   * Docker & Docker-compose
 
 Installation (docker)
