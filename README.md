@@ -2,23 +2,52 @@
 
 The end of earth will not be the end of us.
 
+*Just another school project*
+
 Requirements
 ------------
 
   * PHP 7.1.3 or higher;
   * PDO-MySQL PHP extension enabled;
-  * and the [usual Symfony application requirements][1].
+  * Docker & Docker-compose
 
-Installation
+Installation (docker)
 ------------
 
-Execute this command to install the project:
+Execute these commands to install the project:
 
 ```bash
-$ git clone https://github.com/SundownDEV/vulcano
-$ cd vulcano/
-$ composer install
+$ git clone https://github.com/SundownDEV/si7
+$ cd si7/
+$ docker-compose up -d
 ```
+
+You can now browse http://localhost:3000/
+
+
+Installation (manual)
+------------
+
+Execute these commands to install the api :
+
+```bash
+$ git clone https://github.com/SundownDEV/si7
+$ cd si7/server
+$ composer install
+$ bin/console doctrine:database:create
+$ bin/console doctrine:schema:update  --force
+$ bin/console server:start
+```
+
+Install and run the client
+
+```
+$ cd ../client
+$ npm install
+$ npm run dev
+```
+
+<hr>
 
 Create database and execute migrations
 
@@ -64,7 +93,7 @@ $ cd vulcano/
 $ ./vendor/bin/simple-phpunit
 ```
 
-Alias
+Built-in commands
 -----
 
 |     Description    | Command           |
