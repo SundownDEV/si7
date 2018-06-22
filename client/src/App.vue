@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
       <router-link to="/" class="navbar-brand">Stellar</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,9 +19,11 @@
         </ul>
       </div>
     </nav>
-    <transition name="fade">
-      <router-view/>
-    </transition>
+    <div class="container">
+      <transition name="fade">
+        <router-view/>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -34,11 +36,11 @@ export default {
 <style scoped>
   .fade-enter-active, .fade-leave-active {
     transition-property: opacity;
-    transition-duration: .25s;
+    transition-duration: .2s;
   }
 
   .fade-enter-active {
-    transition-delay: .25s;
+    transition-delay: .2s;
   }
 
   .fade-enter, .fade-leave-active {

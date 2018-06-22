@@ -3,6 +3,7 @@
     <p>
       {{ msg }}
     </p>
+    <button @click="bite">{{ msg2 }}</button>
   </div>
 </template>
 
@@ -11,7 +12,13 @@ export default {
   name: 'Login',
   data () {
     return {
-      msg: 'Login'
+      msg: 'Login',
+      msg2: 'allo'
+    }
+  },
+  methods: {
+    bite: function () {
+      this.msg2 = 'test'
     }
   }
 }
