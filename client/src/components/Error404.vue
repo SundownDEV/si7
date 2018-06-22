@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="error404">
     <p>
       {{ msg }}
     </p>
@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Error404',
   data () {
     return {
-      msg: 'Login'
+      msg: 'WOOP WOOP C LE SON DE LERROR WOOP WOOP'
     }
   }
 }

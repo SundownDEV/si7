@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="register">
     <p>
       {{ msg }}
     </p>
@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
-      msg: 'Login'
+      msg: 'Register'
     }
   }
 }
