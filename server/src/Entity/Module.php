@@ -4,11 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Validator\Constraint as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @ORM\Table(name="h8WmKo_article")
+ * @ORM\Entity(repositoryClass="App\Repository\ModuleRepository")
+ * @ORM\Table(name="h8WmKo_module")
  *
  * @ApiResource(
  *     attributes={"access_control"="is_granted('ROLE_USER')"},
@@ -17,13 +16,13 @@ use Symfony\Component\Validator\Constraint as Assert;
  *         "post"={"method"="POST", "access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Only admins can add articles."},
  *     },
  *     itemOperations={
- *         "get"={"method"="GET", "access_control"="is_granted('ROLE_USER')"},
+ *         "get"={"method"="GET", "access_control"="is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')"},
  *         "put"={"method"="PUT", "access_control"="is_granted('ROLE_ADMIN') and object.owner == user"},
  *         "delete"={"method"="DELETE", "access_control"="is_granted('ROLE_ADMIN') and object.owner == user"},
  *     }
  * )
  */
-class Article
+class Module
 {
     /**
      * @ORM\Id()
@@ -35,37 +34,32 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="modules")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="float")
      */
-    private $content;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $pusblishedDate;
+    private $cost;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -82,26 +76,14 @@ class Article
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getCost(): ?float
     {
-        return $this->content;
+        return $this->cost;
     }
 
-    public function setContent(string $content): self
+    public function setCost(float $cost): self
     {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getPusblishedDate(): ?\DateTimeInterface
-    {
-        return $this->pusblishedDate;
-    }
-
-    public function setPusblishedDate(\DateTimeInterface $pusblishedDate): self
-    {
-        $this->pusblishedDate = $pusblishedDate;
+        $this->cost = $cost;
 
         return $this;
     }

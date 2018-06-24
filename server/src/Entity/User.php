@@ -22,7 +22,17 @@ use Symfony\Component\Validator\Constraint as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="h8WmKo_user")
  *
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={},
+ *     collectionOperations={
+ *         "get"={"method"="GET", "access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Only admins can add articles."},
+ *         "post"={"method"="POST"},
+ *     },
+ *     itemOperations={
+ *         "get"={"method"="GET", "access_control"="is_granted('ROLE_USER') and object.owner == user"},
+ *         "put"={"method"="PUT", "access_control"="is_granted('ROLE_USER') and object.owner == user"},
+ *     }
+ * )
  */
 class User implements UserInterface, \Serializable
 {
@@ -75,9 +85,15 @@ class User implements UserInterface, \Serializable
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Module", mappedBy="user")
+     */
+    private $modules;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->modules = new ArrayCollection();
     }
 
     public function getId(): int
@@ -213,6 +229,37 @@ class User implements UserInterface, \Serializable
             // set the owning side to null (unless already changed)
             if ($article->getUser() === $this) {
                 $article->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Module[]
+     */
+    public function getModules(): Collection
+    {
+        return $this->modules;
+    }
+
+    public function addModule(Module $module): self
+    {
+        if (!$this->modules->contains($module)) {
+            $this->modules[] = $module;
+            $module->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): self
+    {
+        if ($this->modules->contains($module)) {
+            $this->modules->removeElement($module);
+            // set the owning side to null (unless already changed)
+            if ($module->getUser() === $this) {
+                $module->setUser(null);
             }
         }
 
