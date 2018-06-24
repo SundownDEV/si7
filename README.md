@@ -23,8 +23,14 @@ $ cd si7/
 $ docker-compose up -d
 ```
 
-You can now browse http://localhost:3000/
+Update schema and install bundles assets:
 
+```bash
+$ docker exec si7_app_1 bin/console doctrine:schema:update --force
+$ docker exec si7_app_1 bin/console assets:install
+```
+
+You can now browse the client at `http://localhost:3000/`
 
 Installation (manual)
 ------------
