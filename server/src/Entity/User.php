@@ -26,10 +26,10 @@ use Symfony\Component\Validator\Constraint as Assert;
  *     attributes={},
  *     collectionOperations={
  *         "get"={"method"="GET", "access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Only admins can add articles."},
- *         "post"={"method"="POST"},
+ *         "post"={"method"="POST", "access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Only admins can add articles."},
  *     },
  *     itemOperations={
- *         "get"={"method"="GET", "access_control"="is_granted('ROLE_USER') and object.owner == user"},
+ *         "get"={"method"="GET", "access_control"="(is_granted('ROLE_USER') and object.owner == user) or is_granted('ROLE_ADMIN')"},
  *         "put"={"method"="PUT", "access_control"="is_granted('ROLE_USER') and object.owner == user"},
  *     }
  * )

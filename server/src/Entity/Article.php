@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint as Assert;
  * @ORM\Table(name="h8WmKo_article")
  *
  * @ApiResource(
- *     attributes={"access_control"="is_granted('ROLE_USER')"},
+ *     attributes={"access_control"="is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')"},
  *     collectionOperations={
  *         "get"={"method"="GET"},
  *         "post"={"method"="POST", "access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Only admins can add articles."},
@@ -52,6 +52,11 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $pusblishedDate;
+
+    public function __construct()
+    {
+        $this->pusblishedDate = new \DateTime();
+    }
 
     public function getId()
     {

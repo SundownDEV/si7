@@ -15,11 +15,11 @@ security:
     # https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication
     firewalls:
         login:
-            pattern:  ^/auth
+            pattern:  ^/login
             stateless: true
             anonymous: true
             form_login:
-                check_path:               /auth_check
+                check_path:               /login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
@@ -32,5 +32,5 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
-        - { path: ^/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }
