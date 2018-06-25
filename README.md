@@ -30,6 +30,19 @@ $ docker exec si7_app_1 bin/console doctrine:schema:update --force
 $ docker exec si7_app_1 bin/console assets:install
 ```
 
+Generate keys for authentification
+
+```
+$ openssl genrsa -out config/jwt/private.pem -aes256 4096
+$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+```
+
+In case your private is encrypted and getting an error, you need to decrypt it first
+
+```
+$ openssl rsa -in config/jwt/private.pem -out config/jwt/private.pem
+```
+
 You can now browse the client at `http://localhost:3000/`
 
 Installation (manual)
