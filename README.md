@@ -9,11 +9,13 @@ Architecture
 
 The application is made of a simple client to server architecture. See the schema below.
 
-<p align="center"><img src="./docs/archi1.png" alt="architecture picture"></p>
+<p align="center"><img src="./docs/archi1.png" alt="architecture schema"></p>
 
 The server side use Api Platform, a powerful Symfony bundle to generate swagger documentation and default CRUD methods. The JWT component make authentication easier for the client side.
 
 The usage of Docker allows us to deploy easily the application in a closed and secure environment.
+
+<p align="center"><img src="./docs/archi2.png" alt="architecture schema"></p>
 
 Requirements
 ------------
