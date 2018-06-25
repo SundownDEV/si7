@@ -17,6 +17,8 @@ The usage of Docker allows us to deploy easily the application in a closed and s
 
 <p align="center"><img src="./docs/archi2.png" alt="architecture schema"></p>
 
+The client simply use the login route `/login_check` to request a JWT token using user credentials. If the given credentials matches with a user in the database, the client is allowed use the api as it is authenticated.
+
 Requirements
 ------------
 
