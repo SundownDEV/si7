@@ -8,6 +8,7 @@ Requirements
 ------------
 
   * PHP 7.1.3 or higher;
+  * MySQL 5.7
   * PDO-MySQL PHP extension enabled;
   * npm & node **>= 8**
   * Docker **>= 18** & Docker-compose **>= 1.21.0**
@@ -20,27 +21,7 @@ Execute these commands to install the project:
 ```bash
 $ git clone https://github.com/SundownDEV/si7
 $ cd si7/
-$ docker-compose up -d
-```
-
-Update schema and install bundles assets:
-
-```bash
-$ docker exec si7_app_1 bin/console doctrine:schema:update --force
-$ docker exec si7_app_1 bin/console assets:install
-```
-
-Generate keys for authentification
-
-```
-$ openssl genrsa -out config/jwt/private.pem -aes256 4096
-$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
-```
-
-In case your private is encrypted and getting an error, you need to decrypt it first
-
-```
-$ openssl rsa -in config/jwt/private.pem -out config/jwt/private.pem
+$ docker-compose build
 ```
 
 You can now browse the client at `http://localhost:3000/`
@@ -69,48 +50,33 @@ $ npm run dev
 
 <hr>
 
-Create database and execute migrations
-
-```bash
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:migration:migrate
-```
-
-Create a new user
-
-```bash
-$ php bin/console app:add-user
-```
-
-OR load test fixtures
-
-```bash
-$ php bin/console doctrine:fixtures:load
-```
-
 Usage
 -----
 
-There's no need to configure anything to run the application. Just execute this
-command to run the built-in web server and access the application in your
-browser at <http://localhost:8000>:
+Create the database (manual installation only)
 
-```bash
-$ cd vulcano/
-$ php bin/console server:start
+```
+$ php bin/console doctrine:database:create
 ```
 
-Alternatively, you can [configure a fully-featured web server][2] like Nginx
-or Apache to run the application.
-
-Tests
------
-
-Execute this command to run tests:
+Update schema and install bundles assets
 
 ```bash
-$ cd vulcano/
-$ ./vendor/bin/simple-phpunit
+$ docker exec si7_app_1 bin/console doctrine:schema:update --force
+$ docker exec si7_app_1 bin/console assets:install
+```
+
+Generate keys for authentification
+
+```
+$ openssl genrsa -out config/jwt/private.pem -aes256 4096
+$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+```
+
+In case your private key is encrypted and getting an error, you need to decrypt it first
+
+```
+$ openssl rsa -in config/jwt/private.pem -out config/jwt/private.pem
 ```
 
 Built-in commands
@@ -125,6 +91,3 @@ Built-in commands
 | List users      | `php bin/console app:list-users`      |
 | Create new user      | `php bin/console app:add-user`      |
 | Delete an user      | `php bin/console app:delete-user`      |
-
-[1]: https://symfony.com/doc/current/reference/requirements.html
-[2]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
