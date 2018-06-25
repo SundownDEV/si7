@@ -59,4 +59,7 @@ RUN mkdir -p var/cache var/logs var/sessions \
 
 # quick fix for manifest.json bug
 RUN mkdir -p ./public/build/ \
-        && echo "{}" > ./public/build/manifest.json
+    && echo "{}" > ./public/build/manifest.json
+
+RUN mkdir -p ./config/jwt/ \
+    && chmod -R 777 ./config/jwt/
