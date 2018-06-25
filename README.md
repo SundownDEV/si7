@@ -4,14 +4,26 @@ The end of earth will not be the end of us.
 
 *Just another school project*
 
+Architecture
+------------
+
+The application is made of a simple client to server architecture. See the schema below.
+
+<p align="center"><img src="./docs/archi1.png" alt="architecture picture"></p>
+
+The server side use Api Platform, a powerful Symfony bundle to generate swagger documentation and default CRUD methods. The JWT component make authentication easier for the client side.
+
+The usage of Docker allows us to deploy easily the application in a closed and secure environment.
+
 Requirements
 ------------
 
   * PHP 7.1.3 or higher;
   * MySQL 5.7
   * PDO-MySQL PHP extension enabled;
+  * Composer
   * npm & node **>= 8**
-  * Docker **>= 18** & Docker-compose **>= 1.21.0**
+  * Docker **>= 18.0.0** & Docker-compose **>= 1.21.0**
 
 Installation (docker)
 ------------
@@ -66,7 +78,7 @@ $ docker exec si7_app_1 bin/console doctrine:schema:update --force
 $ docker exec si7_app_1 bin/console assets:install
 ```
 
-Generate keys for authentification
+Generate keys for authentication
 
 ```
 $ openssl genrsa -out config/jwt/private.pem -aes256 4096
