@@ -10462,6 +10462,11 @@ template {
   display: none;
 }
 
+@font-face {
+  font-family: "Aileron Regular";
+  src: url("../fonts/Ailerons-Regular.woff");
+}
+
 /* Variables */
 /* Mixins */
 /* Classes */
@@ -16279,8 +16284,8 @@ template {
   font-family: "Font Awesome 5 Brands";
   font-style: normal;
   font-weight: normal;
-  src: url(../../../fonts/fa-brands-400.eot);
-  src: url(../../../fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../../../fonts/fa-brands-400.woff2) format("woff2"), url(../../../fonts/fa-brands-400.woff) format("woff"), url(../../../fonts/fa-brands-400.ttf) format("truetype"), url(../../../fonts/fa-brands-400.svg#fontawesome) format("svg");
+  src: url(../fonts/fa-brands-400.eot);
+  src: url(../fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../fonts/fa-brands-400.woff2) format("woff2"), url(../fonts/fa-brands-400.woff) format("woff"), url(../fonts/fa-brands-400.ttf) format("truetype"), url(../fonts/fa-brands-400.svg#fontawesome) format("svg");
 }
 
 /* line 5, C:/wamp64/www/si7/assets/css/scss/global/_fontawesome.scss */
@@ -16292,8 +16297,8 @@ template {
   font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 400;
-  src: url(../../../fonts/fa-regular-400.eot);
-  src: url(../../../fonts/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(../../../fonts/fa-regular-400.woff2) format("woff2"), url(../../../fonts/fa-regular-400.woff) format("woff"), url(../../../fonts/fa-regular-400.ttf) format("truetype"), url(../../../fonts/fa-regular-400.svg#fontawesome) format("svg");
+  src: url(../fonts/fa-regular-400.eot);
+  src: url(../fonts/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(../fonts/fa-regular-400.woff2) format("woff2"), url(../fonts/fa-regular-400.woff) format("woff"), url(../fonts/fa-regular-400.ttf) format("truetype"), url(../fonts/fa-regular-400.svg#fontawesome) format("svg");
 }
 
 /* line 5, C:/wamp64/www/si7/assets/css/scss/global/_fontawesome.scss */
@@ -16305,8 +16310,8 @@ template {
   font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 900;
-  src: url(../../../fonts/fa-solid-900.eot);
-  src: url(../../../fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../../../fonts/fa-solid-900.woff2) format("woff2"), url(../../../fonts/fa-solid-900.woff) format("woff"), url(../../../fonts/fa-solid-900.ttf) format("truetype"), url(../../../fonts/fa-solid-900.svg#fontawesome) format("svg");
+  src: url(../fonts/fa-solid-900.eot);
+  src: url(../fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../fonts/fa-solid-900.woff2) format("woff2"), url(../fonts/fa-solid-900.woff) format("woff"), url(../fonts/fa-solid-900.ttf) format("truetype"), url(../fonts/fa-solid-900.svg#fontawesome) format("svg");
 }
 
 /* line 5, C:/wamp64/www/si7/assets/css/scss/global/_fontawesome.scss */
@@ -16317,6 +16322,217 @@ template {
 /* line 5, C:/wamp64/www/si7/assets/css/scss/global/_fontawesome.scss */
 .fa, .fas {
   font-weight: 900;
+}
+
+/* line 1, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage {
+  background: #f3f4f4;
+}
+
+/* line 4, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .header {
+  text-align: center;
+}
+
+/* line 7, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .header .title {
+  font-size: 15px;
+  letter-spacing: 2.5;
+  padding: 15 0;
+  font-family: 'Aileron Regular';
+}
+
+/* line 14, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .header .baseline {
+  font-weight: bold;
+  font-size: 20px;
+  color: #313e3e;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+/* line 22, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .header .baseline-list {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 30px;
+}
+
+/* line 27, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .header .baseline-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3b4848;
+  text-transform: uppercase;
+  font-family: 'Aileron Regular';
+}
+
+/* line 37, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .whoarewe {
+  margin-bottom: 100px;
+}
+
+/* line 40, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .whoarewe .title {
+  display: inline-block;
+  background: #021740;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Aileron Regular';
+  padding: 10px 50px;
+  margin: 0;
+  margin-bottom: -24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 54, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .whoarewe .description {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* line 58, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .whoarewe .description .right {
+  display: inline-block;
+  background: #053493;
+  color: #fff;
+  padding: 60px 20px;
+  max-width: 310px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* line 72, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .slider img {
+  max-width: 80%;
+  margin: auto;
+}
+
+/* line 77, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .slider .carousel-caption {
+  position: relative;
+  color: inherit;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 50px 20px;
+}
+
+/* line 86, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .slider .carousel-indicators {
+  position: relative;
+}
+
+/* line 89, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .slider .carousel-indicators li {
+  position: relative;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 14px;
+  height: 14px;
+  margin: 0 10px;
+  border-radius: 100%;
+  text-indent: -999px;
+  background-color: rgba(93, 112, 241, 0.2);
+}
+
+/* line 102, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .slider .carousel-indicators .active {
+  background-color: #053493;
+}
+
+/* line 108, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages {
+  margin-top: 30px;
+}
+
+/* line 111, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages .title {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+/* line 116, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages .title .right {
+  display: inline-block;
+  background: #021740;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Aileron Regular';
+  padding: 10px 50px;
+  margin: 0;
+  margin-bottom: -24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 131, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages .description {
+  display: inline-block;
+  background: #053493;
+  color: #fff;
+  padding: 60px 20px;
+  max-width: 310px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* line 141, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages .gallery {
+  padding: 40px 0;
+}
+
+/* line 144, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .advantages .gallery .caption {
+  padding: 25px;
+  padding-bottom: 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* line 155, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .features .features-list {
+  list-style: none;
+  padding: 0;
+  background: #053493;
+  padding: 30px 0;
+  margin: 0;
+}
+
+/* line 162, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .features .features-list li {
+  display: flex;
+  color: #fff;
+  padding: 20px;
+  align-items: center;
+}
+
+/* line 168, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .features .features-list li i {
+  font-size: 24px;
+  margin-right: 25px;
+  vertical-align: middle;
+}
+
+/* line 177, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .footer {
+  background: #000;
+}
+
+/* line 180, C:/wamp64/www/si7/assets/css/scss/components/_homepage.scss */
+.homepage .footer .copyright {
+  padding-top: 40px;
+  padding-bottom: 15px;
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=../styles.map */
