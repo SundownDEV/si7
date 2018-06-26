@@ -1,49 +1,29 @@
 <template>
   <div class="login">
-    <p>
-      {{ msg }}
-    </p>
-    <button @click="bite">{{ msg2 }}</button>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="mail" name="mail" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" @click.prevent="submitLogin">Submit</button>
+  </form>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Login',
-  data () {
-    return {
-      msg: 'Login',
-      msg2: 'allo'
-    }
-  },
   methods: {
-    bite: function () {
-      this.msg2 = 'test'
+    submitLogin: function () {
+      console.log('Do something here')
     }
   }
 }
 
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1,
-  h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-
-</style>
