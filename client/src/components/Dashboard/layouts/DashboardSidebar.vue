@@ -99,6 +99,6 @@
 
 <script>
 export default {
-  name: 'AdminSidebar'
+  name: 'DashboardSidebar'
 }
 </script>

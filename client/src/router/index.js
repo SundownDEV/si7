@@ -8,7 +8,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Error404 from '@/components/Error404'
 
-import AdminHomepage from '@/components/admin/AdminHomepage'
+import DashboardHomepage from '@/components/Dashboard/DashboardHomepage'
 
 Vue.use(Router)
 
@@ -31,17 +31,17 @@ export default new Router({
       component: Register
     },
     {
-      path: '/admin',
-      redirect: '/admin/homepage',
-      name: 'Admin',
+      path: '/Dashboard',
+      redirect: '/Dashboard/homepage',
+      name: 'Dashboard',
       component: {
         render (c) { return c('router-view') }
       },
       children: [
         {
           path: 'homepage',
-          name: 'AdminHomepage',
-          component: AdminHomepage
+          name: 'DashboardHomepage',
+          component: DashboardHomepage
         }
       ]
     },

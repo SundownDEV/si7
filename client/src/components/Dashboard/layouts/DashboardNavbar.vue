@@ -178,6 +178,6 @@
 
 <script>
 export default {
-  name: 'AdminNavbar'
+  name: 'DashboardNavbar'
 }
 </script>

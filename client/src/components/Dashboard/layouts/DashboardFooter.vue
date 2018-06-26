@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: 'AdminFooter'
+  name: 'DashboardFooter'
 }
 </script>
