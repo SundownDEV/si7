@@ -11,7 +11,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\ModuleType;
+use App\Entity\ModuleReference;
 use App\Entity\User;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -50,8 +50,8 @@ class AppFixtures extends Fixture
 
     private function loadModuleTypes(ObjectManager $manager)
     {
-        foreach ($this->getUserData() as [$name]) {
-            $moduleType = new ModuleType();
+        foreach ($this->getModuleTypeData() as [$name]) {
+            $moduleType = new ModuleReference();
             $moduleType->setName($name);
 
             $manager->persist($moduleType);

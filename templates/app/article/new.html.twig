@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% set menu = 'admin_articles' %}
+
+{% block PageTitle %}Ajouter un articles{% endblock %}
+
+{% block body %}
+    {{ include('app/article/_form.html.twig') }}
+
+    <a href="{{ path('app_article_index') }}">back to list</a>
+{% endblock %}

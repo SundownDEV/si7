@@ -3,16 +3,25 @@
     <meta charset="UTF-8">
     <title>Stellar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
     {% block stylesheet %}
         <link rel="stylesheet" href="assets/css/styles.css">
     {% endblock %}
 </head>
 <body>
 <div class="homepage">
+    <div class="login">
+        <img class="logo" src="assets/img/logo-white.png" alt="logo">
+        <h1 class="name">Solaris</h1>
+        <div class="login-bottom">
+            <a href="{{ path('security_login') }}" class="btn-login">Sign In</a>
+            <h5 class="getstarted">Get Started</h5>
+            <div class="getstarted-line"></div>
+        </div>
+    </div>
     <div class="heading">
-        <h3 class="title">Stellar</h3>
-        <h1 class="baseline">Une vie en orbite</h1>
+        <h3 class="title">SOLARIS</h3>
+        <h2 class="baseline">Une vie en orbite</h2>
         <ul class="baseline-list">
             <li>Votre module,</li>
             <li>Votre habitat,</li>
@@ -31,19 +40,13 @@
         <div id="carouxsalty" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="assets/img/homepage/satellite.png" alt="slide">
+                    <img class="d-block w-100" src="assets/img/homepage/module1.png" alt="slide">
                     <div class="carousel-caption d-md-block">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ea aspernatur provident quasi animi, ad ipsa asperiores voluptas quaerat, quidem modi ducimus, velit corporis id optio veritatis a nihil adipisci!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="assets/img/homepage/satellite.png" alt="slide">
-                    <div class="carousel-caption d-md-block">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ea aspernatur provident quasi animi, ad ipsa asperiores voluptas quaerat, quidem modi ducimus, velit corporis id optio veritatis a nihil adipisci!</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="assets/img/homepage/satellite.png" alt="slide">
+                    <img class="d-block w-100" src="assets/img/homepage/module2.png" alt="slide">
                     <div class="carousel-caption d-md-block">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ea aspernatur provident quasi animi, ad ipsa asperiores voluptas quaerat, quidem modi ducimus, velit corporis id optio veritatis a nihil adipisci!</p>
                     </div>
@@ -52,7 +55,6 @@
             <ol class="carousel-indicators">
                 <li data-target="#carouxsalty" data-slide-to="0" class="active"></li>
                 <li data-target="#carouxsalty" data-slide-to="1"></li>
-                <li data-target="#carouxsalty" data-slide-to="2"></li>
             </ol>
         </div>
     </div>
@@ -78,13 +80,6 @@
             <li><i class="fas fa-wifi"></i> <span>Suivez l’actualité des stations à proximité en temps réel</span></li>
         </ul>
     </div>
-</div>
-<div class="features">
-    <ul class="features-list">
-        <li><i class="fas fa-toggle-on"></i> <span>Un monitoring complet et intuitif</span></li>
-        <li><i class="fas fa-hands-helping"></i> <span>Une assistance video-holographique disponible à tout moment.</span></li>
-
-</div>
 {% block footer %}
     <div class="footer">
           <span class="copyright">

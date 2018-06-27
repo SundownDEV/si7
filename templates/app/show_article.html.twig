@@ -1,0 +1,18 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Actualité{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="card col-md-12">
+        <img class="align-self-center" src="{{ upload_dir ~ '/' ~ article.image }}" width="480" alt="">
+        <hr>
+        <div class="card-body">
+            <h3>{{ article.title }}</h3>
+            <p><small class="text-muted">Par {{ article.user }} le {{ article.date|localizeddate('full', 'none', 'fr') }}</small></p>
+
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

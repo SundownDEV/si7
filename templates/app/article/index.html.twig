@@ -1,0 +1,38 @@
+{% extends 'app/base.html.twig' %}
+
+{% set menu = 'admin_articles' %}
+
+{% block PageTitle %}Gérer les articles{% endblock %}
+
+{% block headBtn %}<a href="{{ path('app_article_new') }}" class="btn btn-primary btn-block">Ajouter un article</a>{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><img src="{{ upload_dir ~ '/' ~ article.image }}" width="256" alt=""></td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.date ? article.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.content }}</td>
+                <td>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-primary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun résultat.<td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

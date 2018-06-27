@@ -20,7 +20,7 @@ class Module
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ModuleType", inversedBy="modules")
+     * @ORM\ManyToOne(targetEntity="ModuleReference", inversedBy="modules")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
@@ -71,12 +71,12 @@ class Module
         return $this->id;
     }
 
-    public function getType(): ?ModuleType
+    public function getType(): ?ModuleReference
     {
         return $this->type;
     }
 
-    public function setType(?ModuleType $type): self
+    public function setType(?ModuleReference $type): self
     {
         $this->type = $type;
 

@@ -11,6 +11,8 @@
 
 namespace App\Controller\Application;
 
+use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use App\Utils\Slugger;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,12 +28,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * Dashboard index.
+     * Dashboard index
      *
      * @Route("/", methods={"GET"}, name="index")
      */
-    public function index(): Response
+    public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('app/index.html.twig');
+        return $this->render('app/index.html.twig', [
+            'articles' => $articleRepository->findBy([], ['id' => 'DESC'])
+        ]);
+    }
+
+    /**
+     * Show article
+     *
+     * @Route("/article/{id}", methods={"GET"}, name="show_article")
+     */
+    public function showArticle(Article $article, ArticleRepository $articleRepository): Response
+    {
+        return $this->render('app/show_article.html.twig', [
+            'article' => $article,
+        ]);
     }
 }

@@ -74,6 +74,11 @@ class User implements UserInterface
         $this->bills = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
+
     public function getId()
     {
         return $this->id;

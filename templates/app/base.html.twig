@@ -1,9 +1,11 @@
+{% set menu = '' %}
+
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Stellar - {{ block('PageTitle') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body class="fix-header fix-sidebar mini-sidebar">
@@ -16,12 +18,12 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ path('app_index') }}">
                         <!-- Logo icon -->
-                        <b><img src="/assets/img/dashboard/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="/assets/img/logo.png" width="24" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="/assets/img/dashboard/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                        <span>Stellar</span>
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -62,21 +64,40 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label">Home</li>
-                        <li class="active"><a href="{{ path('app_index') }}">Dashboard </a></li>
+                        <li {% if menu == 'dashboard' %}class="active"{% endif %}>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
 
                         <li class="nav-label">Mes modules</li>
-                        <li><a href="#">Gérer mes modules</a></li>
-                        <li><a href="">Commander un module</a></li>
-                        <li><a href="">Facturation</a></li>
+                        <li {% if menu == 'modules' %}class="active"{% endif %}>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer mes modules</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Commander un module</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Facturation</span></a>
+                        </li>
 
                         <li class="nav-label">Assistance</li>
-                        <li><a href="">Mes tickets</a></li>
-                        <li><a href="">Créer un ticket</a></li>
+                        <li>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Mes tickets</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Créer un ticket</span></a>
+                        </li>
 
                         {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-label">Administration</li>
-                        <li><a href="">Gérer les articles</a></li>
-                        <li><a href="">Gérer les modules</a></li>
+                            <li {% if menu == 'admin_articles' %}class="active"{% endif %}>
+                                <a href="{{ path('app_article_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les articles</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les modules</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les tickets</span></a>
+                            </li>
                         {% endif %}
                     </ul>
                 </nav>
@@ -91,8 +112,12 @@
         <div class="page-wrapper">
             <!-- Bread crumb -->
             <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">{% block PageTitle %}Dashboard{% endblock %}</h3></div>
+                <div class="col-md-10 align-self-center">
+                    <h3 class="text-primary">{% block PageTitle %}Dashboard{% endblock %}</h3>
+                </div>
+                <div class="col-md-2 align-self-lg-end">
+                    {% block headBtn %}{% endblock %}
+                </div>
             </div>
             <!-- End Bread crumb -->
             <!-- Container fluid  -->

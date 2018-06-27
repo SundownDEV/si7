@@ -1,61 +1,60 @@
 {% extends 'app/base.html.twig' %}
 
 {% block body %}
-<!-- Start Page Content -->
-<div class="row">
-    <div class="col-md-3">
-        <div class="card p-30">
-            <div class="media">
-                <div class="media-left meida media-middle">
-                    <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card bg-primary p-20">
+                <div class="media widget-ten">
+                    <div class="media-left meida media-middle">
+                        <span><i class="ti-bag f-s-40"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2 class="color-white">278</h2>
+                        <p class="m-b-0">New Posts</p>
+                    </div>
                 </div>
-                <div class="media-body media-text-right">
-                    <h2>568120</h2>
-                    <p class="m-b-0">Total Revenue</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-pink p-20">
+                <div class="media widget-ten">
+                    <div class="media-left meida media-middle">
+                        <span><i class="ti-comment f-s-40"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2 class="color-white">278</h2>
+                        <p class="m-b-0">New Comment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success p-20">
+                <div class="media widget-ten">
+                    <div class="media-left meida media-middle">
+                        <span><i class="ti-vector f-s-40"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2 class="color-white">$27647</h2>
+                        <p class="m-b-0">Bounce Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger p-20">
+                <div class="media widget-ten">
+                    <div class="media-left meida media-middle">
+                        <span><i class="ti-location-pin f-s-40"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2 class="color-white">278</h2>
+                        <p class="m-b-0">Total Visitor</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card p-30">
-            <div class="media">
-                <div class="media-left meida media-middle">
-                    <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
-                </div>
-                <div class="media-body media-text-right">
-                    <h2>1178</h2>
-                    <p class="m-b-0">Sales</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card p-30">
-            <div class="media">
-                <div class="media-left meida media-middle">
-                    <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
-                </div>
-                <div class="media-body media-text-right">
-                    <h2>25</h2>
-                    <p class="m-b-0">Stores</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card p-30">
-            <div class="media">
-                <div class="media-left meida media-middle">
-                    <span><i class="fa fa-user f-s-40 color-danger"></i></span>
-                </div>
-                <div class="media-body media-text-right">
-                    <h2>847</h2>
-                    <p class="m-b-0">Customer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row bg-white m-l-0 m-r-0 box-shadow">
     <div class="col-lg-12">
@@ -63,34 +62,23 @@
             <div class="card-title">
                 <h4>Actualité </h4>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Product</th>
-                            <th>quantity</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
 
-                        <tr>
-                            <td>John Abraham</td>
-                            <td><span>iBook</span></td>
-                            <td><span>456 pcs</span></td>
-                            <td><span class="badge badge-success">Done</span></td>
-                        </tr>
-                        <tr>
-                            <td>John Abraham</td>
-                            <td><span>iPhone</span></td>
-                            <td><span>456 pcs</span></td>
-                            <td><span class="badge badge-success">Done</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <hr>
+
+            <div class="row">
+                {% for article in articles %}
+                <div class="col-sm-3">
+                    <div class="card">
+                        <a href="{{ path('app_show_article', {id: article.id}) }}"><img class="card-img-top" src="{{ upload_dir ~ '/' ~ article.image }}" width="100%" height="auto" alt=""></a>
+                        <hr>
+                        <div class="card-body">
+                            <a href="{{ path('app_show_article', {id: article.id}) }}"><h5 class="card-title">{{ article.title }}</h5></a>
+                            <p class="card-text">{{ article.content|slice(0, 45) }}</p>
+                            <a href="{{ path('app_show_article', {id: article.id}) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
