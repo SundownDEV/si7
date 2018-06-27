@@ -17,8 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
-use App\Form\UserType;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -47,6 +45,7 @@ class SecurityController extends AbstractController
             // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
+            $user->setRoles(['ROLE_USER']);
 
             // 4) save the User!
             $entityManager = $this->getDoctrine()->getManager();
@@ -56,7 +55,7 @@ class SecurityController extends AbstractController
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render(
@@ -84,7 +83,7 @@ class SecurityController extends AbstractController
      * But, this will never be executed. Symfony will intercept this first
      * and handle the logout automatically. See logout in config/packages/security.yaml
      *
-     * @Route("/logout", name="ogout")
+     * @Route("/logout", name="logout")
      */
     public function logout(): void
     {
