@@ -50,7 +50,7 @@ ARG VERSION=""
 ###> recipes ###
 ###< recipes ###
 
-COPY ./server .
+COPY ./ .
 
 RUN mkdir -p var/cache var/logs var/sessions \
     #&& composer install --prefer-dist --no-dev --no-scripts --no-progress --no-suggest --classmap-authoritative --no-interaction \
@@ -58,8 +58,5 @@ RUN mkdir -p var/cache var/logs var/sessions \
 	&& chown -R www-data var
 
 # quick fix for manifest.json bug
-RUN mkdir -p ./public/build/ \
-    && echo "{}" > ./public/build/manifest.json
-
-# Generate SSH keys
-RUN ./bin/console app:generate-keys
+#RUN mkdir -p ./public/build/ \
+#    && echo "{}" > ./public/build/manifest.json

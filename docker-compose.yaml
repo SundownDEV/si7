@@ -19,14 +19,14 @@ services:
         STABILITY: stable
     volumes:
       # Comment out the next line in production
-      - ./server:/srv/app:rw
+      - ./:/srv/app:rw
       # If you develop on Linux, comment out the following volumes to just use bind-mounted project directory from host
       - /srv/app/var/
       - /srv/app/var/cache/
       - /srv/app/var/logs/
       - /srv/app/var/sessions/
     env_file:
-      - ./server/.env
+      - ./.env
 
   nginx:
     build:
@@ -37,9 +37,9 @@ services:
     volumes:
       # Comment out the next line in production
       - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
-      - ./server/public:/srv/app/public:ro
+      - ./public:/srv/app/public:ro
     ports:
-      - '8080:80'
+      - '8000:80'
 
   # This HTTP/2 proxy is not secure: it should only be used in dev
   h2-proxy:
