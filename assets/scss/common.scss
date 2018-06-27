@@ -1,0 +1,13 @@
+// Global
+@import 'global/bootstrap';
+@import 'global/normalize';
+@import 'global/fonts';
+@import 'global/variables';
+@import 'global/mixins';
+@import 'global/classes';
+@import 'global/fontawesome';
+
+// Components
+@import 'components/general';
+@import 'components/homepage';
+@import 'components/dashboard';

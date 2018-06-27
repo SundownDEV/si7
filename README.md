@@ -4,13 +4,30 @@ The end of earth will not be the end of us.
 
 *Just another school project*
 
+Architecture
+------------
+
+The application is made of a simple client to server architecture. See the schema below.
+
+<p align="center"><img src="./docs/archi1.png" alt="architecture schema"></p>
+
+The server side use Api Platform, a powerful Symfony bundle to generate swagger documentation and default CRUD methods. The JWT component make authentication easier for the client side.
+
+The usage of Docker allows us to deploy easily the application in a closed and secure environment.
+
+<p align="center"><img src="./docs/archi2.png" alt="architecture schema"></p>
+
+The client simply use the login route `/login_check` to request a JWT token using user credentials. If the given credentials matches with a user in the database, the client is allowed use the api as it is authenticated.
+
 Requirements
 ------------
 
   * PHP 7.1.3 or higher;
+  * MySQL 5.7
   * PDO-MySQL PHP extension enabled;
+  * Composer
   * npm & node **>= 8**
-  * Docker **>= 18** & Docker-compose **>= 1.21.0**
+  * Docker **>= 18.0.0** & Docker-compose **>= 1.21.0**
 
 Installation (docker)
 ------------
@@ -20,11 +37,10 @@ Execute these commands to install the project:
 ```bash
 $ git clone https://github.com/SundownDEV/si7
 $ cd si7/
-$ docker-compose up -d
+$ docker-compose build
 ```
 
-You can now browse http://localhost:3000/
-
+You can now browse the client at `http://localhost:3000/`
 
 Installation (manual)
 ------------
@@ -50,48 +66,33 @@ $ npm run dev
 
 <hr>
 
-Create database and execute migrations
-
-```bash
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:migration:migrate
-```
-
-Create a new user
-
-```bash
-$ php bin/console app:add-user
-```
-
-OR load test fixtures
-
-```bash
-$ php bin/console doctrine:fixtures:load
-```
-
 Usage
 -----
 
-There's no need to configure anything to run the application. Just execute this
-command to run the built-in web server and access the application in your
-browser at <http://localhost:8000>:
+Create the database (manual installation only)
 
-```bash
-$ cd vulcano/
-$ php bin/console server:start
+```
+$ php bin/console doctrine:database:create
 ```
 
-Alternatively, you can [configure a fully-featured web server][2] like Nginx
-or Apache to run the application.
-
-Tests
------
-
-Execute this command to run tests:
+Update schema and install bundles assets
 
 ```bash
-$ cd vulcano/
-$ ./vendor/bin/simple-phpunit
+$ docker exec si7_app_1 bin/console doctrine:schema:update --force
+$ docker exec si7_app_1 bin/console assets:install
+```
+
+Generate keys for authentication
+
+```
+$ openssl genrsa -out config/jwt/private.pem -aes256 4096
+$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+```
+
+In case your private key is encrypted and getting an error, you need to decrypt it first
+
+```
+$ openssl rsa -in config/jwt/private.pem -out config/jwt/private.pem
 ```
 
 Built-in commands
@@ -106,6 +107,3 @@ Built-in commands
 | List users      | `php bin/console app:list-users`      |
 | Create new user      | `php bin/console app:add-user`      |
 | Delete an user      | `php bin/console app:delete-user`      |
-
-[1]: https://symfony.com/doc/current/reference/requirements.html
-[2]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html

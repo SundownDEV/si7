@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <title>{% block title %}Login{% endblock %}</title>
+
+    {% block stylesheets %}
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('build/css/signin.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body class="text-center">
+{{ form_start(form) }}
+{{ form_row(form.fullName) }}
+{{ form_row(form.email) }}
+{{ form_row(form.password.first) }}
+{{ form_row(form.password.second) }}
+
+<button type="submit">Register!</button>
+{{ form_end(form) }}
+</body>
+</html>
