@@ -1,0 +1,9 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Créer un type de module{% endblock %}
+
+{% block body %}
+    {{ include('app/module_type/_form.html.twig') }}
+
+    <a href="{{ path('app_module_type_index') }}">Retour à la liste</a>
+{% endblock %}

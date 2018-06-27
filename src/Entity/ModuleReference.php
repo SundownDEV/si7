@@ -5,12 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ModuleTypeRepository")
  * @ORM\Table("xfHQzAsCeM")
  */
-class ModuleType
+class ModuleReference
 {
     /**
      * @ORM\Id()
@@ -28,6 +29,14 @@ class ModuleType
      * @ORM\OneToMany(targetEntity="App\Entity\Module", mappedBy="type")
      */
     private $modules;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Veuillez sélectionner un fichier.")
+     * @Assert\Image()
+     */
+    private $image;
 
     public function __construct()
     {
@@ -78,6 +87,18 @@ class ModuleType
                 $module->setType(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }

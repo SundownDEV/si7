@@ -1,0 +1,17 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Modifier un type de module{% endblock %}
+
+{% block body %}
+    <div class="col-md-12">
+        <img src="{{ upload_dir ~ '/' ~ module_type.image }}" width="256" alt="">
+    </div>
+
+    <hr>
+
+    {{ include('app/module_type/_form.html.twig') }}
+
+    {{ include('app/module_type/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_module_type_index') }}">Retour à la liste</a>
+{% endblock %}

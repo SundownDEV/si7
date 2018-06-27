@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\ModuleType;
+use App\Entity\ModuleReference;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method ModuleType|null find($id, $lockMode = null, $lockVersion = null)
- * @method ModuleType|null findOneBy(array $criteria, array $orderBy = null)
- * @method ModuleType[]    findAll()
- * @method ModuleType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ModuleReference|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ModuleReference|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ModuleReference[]    findAll()
+ * @method ModuleReference[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ModuleTypeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, ModuleType::class);
+        parent::__construct($registry, ModuleReference::class);
     }
 
 //    /**

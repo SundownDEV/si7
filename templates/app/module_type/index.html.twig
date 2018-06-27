@@ -1,0 +1,32 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Gérer les types de module{% endblock %}
+
+{% block headBtn %}<a href="{{ path('app_module_type_new') }}" class="btn btn-info btn-block">Ajouter un type</a>{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for module_type in module_types %}
+            <tr>
+                <td><img src="{{ upload_dir ~ '/' ~ module_type.image }}" width="256" alt=""></td>
+                <td>{{ module_type.name }}</td>
+                <td>
+                    <a href="{{ path('app_module_type_edit', {'id': module_type.id}) }}" class="btn btn-primary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
