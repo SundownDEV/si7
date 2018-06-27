@@ -60,3 +60,6 @@ RUN mkdir -p var/cache var/logs var/sessions \
 # quick fix for manifest.json bug
 #RUN mkdir -p ./public/build/ \
 #    && echo "{}" > ./public/build/manifest.json
+
+RUN mkdir -p ./public/uploads
+RUN chmod -R 777 ./public/uploads
