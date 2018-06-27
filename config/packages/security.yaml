@@ -10,7 +10,7 @@ security:
         # To see the users at src/App/DataFixtures/ORM/LoadFixtures.php
         # To load users from somewhere else: https://symfony.com/doc/current/security/custom_provider.html
         database_users:
-            entity: { class: App\Entity\User, property: username }
+            entity: { class: App\Entity\User, property: email }
 
     # https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication
     firewalls:
@@ -50,4 +50,4 @@ security:
     access_control:
         # this is a catch-all for the admin area
         # additional security lives in the controllers
-        - { path: '^/app', roles: [ROLE_USER,ROLE_ADMIN] }
+        #- { path: '^/app', roles: [ROLE_USER,ROLE_ADMIN] }
