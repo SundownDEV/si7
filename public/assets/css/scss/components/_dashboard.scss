@@ -8177,3 +8177,148 @@ Calendar
   .retina-logo {
     display: inline-block !important;
   }
+
+.tchapitchapo{
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  height: 300px;
+  width: 260px;
+  background: #fff;
+  border: solid 1px #ddd;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.05);
+  border-radius: 3px 3px 0px 0px;
+  @include responsive-below(sm){
+    top: 60px;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 9999;
+    border-radius: 0;
+  }
+
+  
+  .head-chat{
+    padding: 10px 15px;
+    font-size: 13px;
+    color: #888;
+    border-bottom: solid 1px #ddd;
+    display: flex;
+    justify-content: space-between;
+    
+    .left{
+      
+      i{
+        margin-right: 5px;
+      }
+    }
+    
+    .right{
+      .chat-close{
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+  
+  .messages-chat{
+    height: 228px;
+    overflow-y: auto;
+    padding: 5px 0;
+    list-style: none;
+    @include responsive-below(sm){
+      height: 100%;
+    }
+    
+    /* width */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+    
+    .msg-chat{
+      padding: 6px 10px;
+      font-size: 13px;
+      border-bottom: solid 1px #eee;
+      
+      .username-chat{
+        font-weight: bold;
+      }
+      
+      .username-chat::after{
+        content: ' :';
+      }
+    }
+    
+    .msg-chat:last-child{
+      border-bottom: 0;
+      @include responsive-below(sm){
+        padding-bottom: 160px;
+      }
+    }
+  }
+  
+  .input-chat{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    @include responsive-below(sm){
+      position: fixed;
+    }
+    
+    input{
+      height: 30px;
+      width: 100%;
+      border: 0;
+      padding-left: 10px;
+      font-size: 13px;
+      border-top: solid 1px #ddd;
+      @include responsive-below(sm){
+        height: 50px
+      }
+    }
+    
+    input:focus{
+      outline: 0;
+    }
+    
+    input::placeholder{
+      color: #d0d0d0;
+    }
+    
+    button{
+      height: 30px;
+      border: 0;
+      background: #fff;
+      color: #888;
+      padding: 0 14px;
+      font-weight: bold;
+      transition: 0.1s;
+      border-top: solid 1px #ddd;
+      border-left: solid 1px #ddd;
+      @include responsive-below(sm){
+        height: 50px;
+      }
+    }
+    
+    button:hover{
+      background: darken(#fff, 3%);
+      color: #1976d2;
+    }
+  }
+}
