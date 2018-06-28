@@ -49,6 +49,7 @@ if(document.querySelector('.dashboard')){
   include('/assets/js/lib/owl-carousel/owl.carousel.min.js');
   include('/assets/js/lib/owl-carousel/owl.carousel-init.js');
   include('/assets/js/scripts.js');
+  include('/assets/js/chat.js');
   
   function toggleChat(){
     if(document.querySelector('.tchapitchapo').style.display == ""){
