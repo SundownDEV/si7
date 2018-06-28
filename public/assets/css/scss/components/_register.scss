@@ -1,13 +1,13 @@
-.login-page{
+.register-page{
   min-height: 100%;
   height: max-content;
   width: 100%;
   background: linear-gradient(to right, #053493 0%,#67afff 100%);
-  
+
   .heading-login{
     text-align: center;
     margin-bottom: 60px;
-    
+
     .logo{
       max-width: 85px;
       margin-top: 10%;
@@ -30,9 +30,9 @@
       letter-spacing: 2.5;
     }
   }
-  
+
   form{
-    
+
     label{
       color: #fff;
       font-size: 18px;
@@ -42,18 +42,26 @@
       text-align: center;
     }
     
+    .ahouiouioui{
+      padding: 30px 0;
+      
+      label{
+        font-family: 'Agene Regular' !important;
+        font-size: 14px !important;
+      }
+    }
+
     input, input:focus, input:valid{
       background: transparent;
       border: 0;
       border-bottom: solid 1px rgba(255, 255, 255, 0.5);
       color: #fff;
-      margin-bottom: 40px;
     }
-    
+
     input::placeholder{
       color: rgba(255,255,255,0.5);
     }
-    
+
     .btn-login{
       padding: 16px 120px;
       background: #fff;
@@ -75,7 +83,7 @@
       background-clip: padding-box;
     }
   }
-  
+
   .register{
     display: block;
     text-align: center;

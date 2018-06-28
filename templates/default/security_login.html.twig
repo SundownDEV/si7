@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Login{% endblock %}</title>
+  <title>{% block title %}Stellar - Sign In{% endblock %}</title>
 
   <link rel="icon" type="image/png" href="/favicon.png">
   {% block stylesheet %}
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="login">
+  <div class="login-page">
     <div class="container">
       <div class="heading-login">
         <a href="{{ path('default_index') }}">
@@ -30,12 +30,12 @@
         {% endif %}
 
         <div class="form-label-group">
-          <label for="email">PIP-MOD MAIL</label>
+          <label for="email">EMAIL</label>
           <input type="text" id="email" name="_username" value="{{ last_email }}" class="form-control" placeholder="Insert your mail" required autofocus>
         </div>
 
         <div class="form-label-group">
-          <label for="password">STELLAR CODE</label>
+          <label for="password">PASSWORD</label>
           <input type="password" id="password" name="_password" class="form-control" placeholder="Insert your code" required>
         </div>
 
