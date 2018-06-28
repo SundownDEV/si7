@@ -308,6 +308,31 @@
     .gallery{
       padding: 40px 0;
       background: rgb(243,244,244);
+      text-align: center;
+      
+      .futursmart{
+        margin: auto;
+        max-width: 100%;
+      }
+      
+      .banner{
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        img{
+          max-height: 60px;
+          margin-right: 30px;
+        }
+
+        span{
+          font-size: 32px;
+          color: #000;
+          font-family: 'Aileron Regular';
+          align-self: center;
+
+        }
+      }
       
       .caption{
         padding: 25px;
@@ -320,7 +345,6 @@
           margin: auto;
           font-size: 24px;
           padding: 30px 0;
-          text-align: center;
         }
       }
     }
