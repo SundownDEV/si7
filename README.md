@@ -7,17 +7,11 @@ The end of earth will not be the end of us.
 Architecture
 ------------
 
-The application is made of a simple client to server architecture. See the schema below.
+The application is made of a simple server-sided architecture. See the schema below.
 
 <p align="center"><img src="./docs/archi1.png" alt="architecture schema"></p>
 
-The server side use Api Platform, a powerful Symfony bundle to generate swagger documentation and default CRUD methods. The JWT component make authentication easier for the client side.
-
 The usage of Docker allows us to deploy easily the application in a closed and secure environment.
-
-<p align="center"><img src="./docs/archi2.png" alt="architecture schema"></p>
-
-The client simply use the login route `/login_check` to request a JWT token using user credentials. If the given credentials matches with a user in the database, the client is allowed use the api as it is authenticated.
 
 Requirements
 ------------
@@ -32,7 +26,7 @@ Requirements
 Installation (docker)
 ------------
 
-Execute these commands to install the project:
+Executer ces commandes pour installer le projet :
 
 ```bash
 $ git clone https://github.com/SundownDEV/si7
@@ -40,28 +34,30 @@ $ cd si7/
 $ docker-compose build
 ```
 
-You can now browse the client at `http://localhost:3000/`
+L'application est maintenant accessible à l'adresse `http://localhost:8000/`
 
 Installation (manual)
 ------------
 
-Execute these commands to install the api :
-
 ```bash
 $ git clone https://github.com/SundownDEV/si7
-$ cd si7/server
+$ cd si7/
 $ composer install
-$ bin/console doctrine:database:create
-$ bin/console doctrine:schema:update  --force
-$ bin/console server:start
 ```
 
-Install and run the client
+Après avoir installé le projet, il faut synchroniser les schemas de la base de donnée.
+
+Pour l'installation manuelle, il faut d'aborder créer la base de donnée. Puis synchroniser les schema.
 
 ```
-$ cd ../client
-$ npm install
-$ npm run dev
+$ php bin/console doctrine:database:create
+$ php bin/console doctrine:schema:update --force
+```
+
+Avec Docker, il faut simplement synchroniser les schema. La base de donnée est déjà initialisée.
+
+```bash
+$ docker exec si7_app_1 bin/console doctrine:schema:update --force
 ```
 
 <hr>
@@ -69,30 +65,10 @@ $ npm run dev
 Usage
 -----
 
-Create the database (manual installation only)
+Charger les data fixtures (données de test)
 
 ```
-$ php bin/console doctrine:database:create
-```
-
-Update schema and install bundles assets
-
-```bash
-$ docker exec si7_app_1 bin/console doctrine:schema:update --force
-$ docker exec si7_app_1 bin/console assets:install
-```
-
-Generate keys for authentication
-
-```
-$ openssl genrsa -out config/jwt/private.pem -aes256 4096
-$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
-```
-
-In case your private key is encrypted and getting an error, you need to decrypt it first
-
-```
-$ openssl rsa -in config/jwt/private.pem -out config/jwt/private.pem
+$ php bin/console doctrine:fixture:load
 ```
 
 Built-in commands

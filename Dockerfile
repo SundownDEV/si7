@@ -58,3 +58,8 @@ RUN mkdir -p var/cache var/logs var/sessions \
 	&& chown -R www-data var \
 	&& mkdir -p ./public/uploads \
 	&& chmod -R 777 ./public/uploads
+
+RUN mkdir -p ./public/build \
+    && echo "{}" > ./public/build/manifest.json
+
+RUN php bin/console assets:install
