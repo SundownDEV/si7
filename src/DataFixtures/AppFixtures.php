@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->loadUsers($manager);
-        $this->loadModuleTypes($manager);
+        //$this->loadModuleTypes($manager);
     }
 
     private function loadUsers(ObjectManager $manager)
