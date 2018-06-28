@@ -1,0 +1,9 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Commander un module{% endblock %}
+
+{% block body %}
+    {{ include('app/module/_form.html.twig') }}
+
+    <a href="{{ path('app_module_index') }}">Retour à la liste</a>
+{% endblock %}
