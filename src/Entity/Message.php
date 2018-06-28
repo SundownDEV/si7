@@ -14,7 +14,7 @@ use App\Controller\Application\ApiController;
  *     attributes={"access_control"="is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')"},
  *     collectionOperations={
  *         "get"={"method"="GET"},
- *         "post"={"method"="POST"},
+ *         "post"={"method"="POST", "controller"=ApiController::class},
  *     },
  *     itemOperations={"get"}
  * )
@@ -27,6 +27,11 @@ class Message
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $user;
 
     /**
      * @ORM\Column(type="text")
@@ -46,6 +51,18 @@ class Message
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(string $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     public function getContent(): ?string
