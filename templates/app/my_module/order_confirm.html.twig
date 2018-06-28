@@ -1,0 +1,43 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Récapitulatif de commande{% endblock %}
+
+{% block body %}
+    {% if module != null %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Date de mise en service</th>
+            <th>Prix TTC</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ module.id }}</td>
+            <td>{{ module.type }}</td>
+            <td>{{ module.CreationDate ? module.CreationDate|localizeddate('full', 'none', 'fr') : '' }}</td>
+            <td>1 650 Unités/mois ou 500 000 Unités</td>
+            <td>
+                <form action="" method="post">
+                    <input type="hidden" name="id" value="{{ module.id }}">
+                    <input type="hidden" name="cost" value="1650 Unités/mois">
+                    <input type="hidden" name="_csrf" value="{{ csrf_token('main') }}">
+                    <button class="btn btn-primary" type="submit">Louer</button>
+                </form>
+                <form action="" method="post">
+                    <input type="hidden" name="id" value="{{ module.id }}">
+                    <input type="hidden" name="cost" value="500 000 Unités">
+                    <input type="hidden" name="_csrf" value="{{ csrf_token('main') }}">
+                    <button class="btn btn-primary" type="submit">Acheter</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% else %}
+        <p>Aucun module disponible !</p>
+    {% endif %}
+{% endblock %}

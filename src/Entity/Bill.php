@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BillRepository")
@@ -30,9 +32,19 @@ class Bill
     private $Module;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $Cost;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     public function getId()
     {
@@ -63,14 +75,26 @@ class Bill
         return $this;
     }
 
-    public function getCost(): ?int
+    public function getCost(): ?string
     {
         return $this->Cost;
     }
 
-    public function setCost(int $Cost): self
+    public function setCost(string $Cost): self
     {
         $this->Cost = $Cost;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

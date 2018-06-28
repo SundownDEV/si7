@@ -21,7 +21,7 @@
                 <td>{{ module.type }}</td>
                 <td>{{ module.CreationDate ? module.CreationDate|localizeddate('full', 'none', 'fr') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_my_modules_edit', {'id': module.id}) }}" class="btn btn-primary">Monitorer</a>
+                    <a href="{{ path('app_module_show', {'id': module.id}) }}" class="btn btn-primary">Monitorer</a>
                 </td>
             </tr>
         {% else %}

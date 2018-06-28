@@ -4,29 +4,19 @@
 
 {% block body %}
 <div class="row">
-   <div class="col-md-6">
-     <div class="card">
-       <div class="card-body">
-         <div class="card-content text-center">
-           <img class="modulez" src="/assets/img/homepage/module1.png" alt="module1">
-           <h2>Astra 106</h2>
-           <h5>1.500 Units/Mois</h5>
-           <a href="#" class="btn btn-primary">Commander</a>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div class="col-md-6">
-     <div class="card">
-       <div class="card-body">
-         <div class="card-content text-center">
-           <img class="modulez" src="/assets/img/homepage/module2.png" alt="module2">
-           <h2>Astra 204</h2>
-           <h5>150.000 Units</h5>
-           <a href="#" class="btn btn-primary">Commander</a>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+    {% for type in types %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-content text-center">
+                        <img class="modulez" src="{{ upload_dir ~ '/' ~ type.image }}" alt="module1">
+                        <h2>{{ type.name }}</h2>
+                        <h5>1.500 Unités/mois ou 500 000 Unités</h5>
+                        <a href="{{ path('app_my_modules_new_confirm', {id: type.id}) }}" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

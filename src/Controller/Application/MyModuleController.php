@@ -2,12 +2,17 @@
 
 namespace App\Controller\Application;
 
+use App\Entity\Bill;
 use App\Entity\Module;
+use App\Entity\ModuleReference;
 use App\Form\Module2Type;
+use App\Repository\BillRepository;
 use App\Repository\ModuleRepository;
+use App\Repository\ModuleTypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -28,26 +33,64 @@ class MyModuleController extends Controller
     }
 
     /**
-     * @Route("/order", name="new", methods="GET|POST")
+     * @Route("/bills", name="bills", methods="GET")
      */
-    public function order(Request $request): Response
+    public function bills(BillRepository $billRepository): Response
     {
-        $module = new Module();
-        $form = $this->createForm(Module2Type::class, $module);
-        $form->handleRequest($request);
+        return $this->render('app/bills.html.twig', [
+            'bills' => $billRepository->findBy(['user' => $this->getUser()->getId()], ['id' => 'DESC'])
+        ]);
+    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($module);
-            $em->flush();
-
-            return $this->redirectToRoute('app_my_modules_index');
-        }
+    /**
+     * @Route("/order", name="new", methods="GET")
+     */
+    public function order(ModuleTypeRepository $moduleTypeRepository): Response
+    {
+        $types = $moduleTypeRepository->findBy([], ['id' => 'DESC']);
 
         return $this->render('app/my_module/new.html.twig', [
-            'module' => $module,
-            'form' => $form->createView(),
+            'types' => $types,
         ]);
+    }
+
+    /**
+     * @Route("/order/{id}/confirm", name="new_confirm", methods="GET")
+     */
+    public function orderConfirm(Request $request, ModuleReference $type, ModuleRepository $moduleRepository): Response
+    {
+        $module = $moduleRepository->findOneBy(['user' => null, 'type' => $type->getId()]);
+
+        return $this->render('app/my_module/order_confirm.html.twig', [
+            'type' => $type,
+            'module' => $module,
+        ]);
+    }
+
+    /**
+     * @Route("/order/{id}/confirm", name="new_confirm_post", methods="POST")
+     */
+    public function orderConfirmPost(Request $request, ModuleReference $type, ModuleRepository $moduleRepository): Response
+    {
+        $module = $moduleRepository->findOneBy(['user' => null, 'id' => $request->request->get('id')]);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $module->setUser($this->getUser());
+
+        $em->flush();
+
+        // Facturation
+        $bill = new Bill();
+
+        $bill->setUser($this->getUser());
+        $bill->setCost($request->request->get('cost'));
+        $bill->setModule($module);
+
+        $em->persist($bill);
+        $em->flush();
+
+        return $this->redirectToRoute('app_my_modules_index');
     }
 
     /**

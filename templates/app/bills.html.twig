@@ -1,0 +1,32 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Facturation{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Référence</th>
+            <th>Module</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for bill in bills %}
+            <tr>
+                <td>#{{ bill.id }}</td>
+                <td>{{ bill.module.type }} (#{{ bill.module.id }})</td>
+                <td>{{ bill.date ? bill.date|localizeddate('full', 'none', 'fr') : '' }}</td>
+                <td>
+                    <a href="" class="btn btn-primary">Afficher</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
