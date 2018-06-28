@@ -4,14 +4,8 @@ The end of earth will not be the end of us.
 
 *Just another school project*
 
-Architecture
+[Cahier technique](./docs/cdcf.md)
 ------------
-
-The application is made of a simple server-sided architecture. See the schema below.
-
-<p align="center"><img src="./docs/archi1.png" alt="architecture schema"></p>
-
-The usage of Docker allows us to deploy easily the application in a closed and secure environment.
 
 Requirements
 ------------
