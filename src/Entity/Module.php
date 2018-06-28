@@ -27,14 +27,9 @@ class Module
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="modules")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
 
     /**
      * @ORM\Column(type="integer")
@@ -63,6 +58,7 @@ class Module
 
     public function __construct()
     {
+        $this->CreationDate = new \DateTime();
         $this->bills = new ArrayCollection();
     }
 
@@ -91,18 +87,6 @@ class Module
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
 
         return $this;
     }

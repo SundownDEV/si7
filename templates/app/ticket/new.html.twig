@@ -1,0 +1,9 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Nouveau ticket{% endblock %}
+
+{% block body %}
+    {{ include('app/ticket/_form.html.twig') }}
+
+    <a href="{{ path('app_ticket_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Mes tickets{% endblock %}
+
+{% block headBtn %}<a href="{{ path('app_ticket_new') }}" class="btn btn-primary btn-block">Créer un ticket</a>{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Object</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.object }}</td>
+                <td>{{ ticket.message }}</td>
+                <td>{{ ticket.status ? 'Ouvert' : 'Fermé' }}</td>
+                <td>
+                    <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}" class="btn btn-primary">Afficher</a>
+                    {% if ticket.status == true and ticket.user.id == app.user.id %}
+                            <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}" class="btn btn-primary">Modifier</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

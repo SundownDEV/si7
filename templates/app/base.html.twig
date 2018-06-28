@@ -81,10 +81,10 @@
 
                         <li class="nav-label">Assistance</li>
                         <li>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Mes tickets</span></a>
+                            <a href="{{ path('app_ticket_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Mes tickets</span></a>
                         </li>
                         <li>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Créer un ticket</span></a>
+                            <a href="{{ path('app_ticket_new') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Créer un ticket</span></a>
                         </li>
 
                         {% if is_granted('ROLE_ADMIN') %}
@@ -93,10 +93,10 @@
                                 <a href="{{ path('app_article_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les articles</span></a>
                             </li>
                             <li>
-                                <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les modules</span></a>
+                                <a href="{{ path('app_module_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les modules</span></a>
                             </li>
                             <li>
-                                <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les tickets</span></a>
+                                <a href="{{ path('app_ticket_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les tickets</span></a>
                             </li>
                         {% endif %}
                     </ul>

@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Modifier le modules #{{ module.id }}{% endblock %}
+
+{% block body %}
+    {{ include('app/module/_form.html.twig') }}
+
+    {{ include('app/module/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_module_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Gérer les modules{% endblock %}
+
+{% block headBtn %}
+    <a href="{{ path('app_module_new') }}" class="btn btn-primary btn-block">Ajouter un module</a>
+    <a href="{{ path('app_module_type_index') }}" class="btn btn-primary btn-block">Gérer les références de module</a>
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Référence</th>
+                <th>Propriétaire/Locataire</th>
+                <th>CreationDate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.id }}</td>
+                <td>{{ module.type }}</td>
+                <td>{{ module.user }}</td>
+                <td>{{ module.CreationDate ? module.CreationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_module_show', {'id': module.id}) }}" class="btn btn-primary">Monitoring</a>
+                    <a href="{{ path('app_module_edit', {'id': module.id}) }}" class="btn btn-primary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
