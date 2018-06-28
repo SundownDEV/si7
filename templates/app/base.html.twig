@@ -18,7 +18,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ path('default_index') }}">
+                    <a class="navbar-brand" href="{{ path('app_index') }}">
                         <!-- Logo icon -->
                         <b><img src="/assets/img/logo.png" width="24" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -115,10 +115,10 @@
         <div class="page-wrapper">
             <!-- Bread crumb -->
             <div class="row page-titles">
-                <div class="col-md-10 align-self-center">
+                <div class="col-md-9 align-self-center">
                     <h3 class="text-primary">{% block PageTitle %}Dashboard{% endblock %}</h3>
                 </div>
-                <div class="col-md-2 align-self-lg-end">
+                <div class="col-md-3 align-self-lg-end">
                     {% block headBtn %}{% endblock %}
                 </div>
             </div>

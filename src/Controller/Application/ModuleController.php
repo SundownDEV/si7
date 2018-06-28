@@ -37,9 +37,9 @@ class ModuleController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $module->setEnergy('0 kWh');
-            $module->setOxygen(0);
-            $module->setTemperature(0);
+            $module->setTemperature(19);
+            $module->setOxygen(98);
+            $module->setEnergy('100 %');
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($module);
