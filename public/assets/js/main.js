@@ -49,4 +49,16 @@ if(document.querySelector('.dashboard')){
   include('/assets/js/lib/owl-carousel/owl.carousel.min.js');
   include('/assets/js/lib/owl-carousel/owl.carousel-init.js');
   include('/assets/js/scripts.js');
+  
+  function toggleChat(){
+    if(document.querySelector('.tchapitchapo').style.display == ""){
+      document.querySelector('.tchapitchapo').style.display = "none";
+      document.querySelector('.toggleChat').style.color = "";
+      document.querySelector('.toggleChat').classList.add('text-muted');
+    } else {
+      document.querySelector('.tchapitchapo').style.display = "";
+      document.querySelector('.toggleChat').style.color = "#252525";
+      document.querySelector('.toggleChat').classList.remove('text-muted');
+    }
+  }
 }
