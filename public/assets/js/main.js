@@ -10,6 +10,23 @@ if(document.querySelector('.homepage')){
     allowPageScroll:"vertical"
 
   });
+
+// -- Auto scroll header/landing
+//  window.addEventListener('wheel', function(e){
+//    if(window.pageYOffset < document.querySelector('.login').offsetHeight && e.deltaY > 0){
+//      window.scroll({
+//        top: document.querySelector('.login').offsetHeight,
+//        left: 0,
+//        behavior: 'smooth'
+//      });
+//    } else if(window.pageYOffset <= document.querySelector('.login').offsetHeight && e.deltaY < 0){
+//      window.scroll({
+//        top: 0,
+//        left: 0,
+//        behavior: 'smooth'
+//      });
+//    }
+//  })
 }
 
 if(document.querySelector('.dashboard')){  

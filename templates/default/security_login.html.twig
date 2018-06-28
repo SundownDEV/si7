@@ -1,43 +1,54 @@
 <!doctype html>
 <html lang="{{ app.request.locale }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Stellar - Sign In{% endblock %}</title>
 
-    <title>{% block title %}Login{% endblock %}</title>
-
-    {% block stylesheets %}
-        <!-- Custom styles for this template -->
-    {% endblock %}
+  <link rel="icon" type="image/png" href="/favicon.png">
+  {% block stylesheet %}
+  <link rel="stylesheet" href="assets/css/styles.css">
+  {% endblock %}
 </head>
 
-<body class="text-center">
-<form action="{{ path('security_login') }}" method="post" class="form-signin">
+<body>
+  <div class="login-page">
+    <div class="container">
+      <div class="heading-login">
+        <a href="{{ path('default_index') }}">
+          <img class="logo" src="assets/img/logo-white.png" alt="logo">
+          <h1 class="name">Stellar</h1>
+        </a>
+      </div>
+      <form action="{{ path('security_login') }}" method="post" class="form-signin">
 
-    <h1 class="h3 mb-3 font-weight-normal">login</h1>
-
-    {% if error %}
+        {% if error %}
         <div class="alert alert-danger">
-            {{ error.messageKey|trans(error.messageData, 'security') }}
+          {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
-    {% endif %}
+        {% endif %}
 
-    <div class="form-label-group">
-        <input type="text" id="email" name="_username" value="{{ last_email }}" class="form-control" placeholder="Email" required autofocus>
-        <label for="email">Email</label>
+        <div class="form-label-group">
+          <label for="email">EMAIL</label>
+          <input type="text" id="email" name="_username" value="{{ last_email }}" class="form-control" placeholder="Insert your mail" required autofocus>
+        </div>
+
+        <div class="form-label-group">
+          <label for="password">PASSWORD</label>
+          <input type="password" id="password" name="_password" class="form-control" placeholder="Insert your code" required>
+        </div>
+
+        <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}" />
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+
+        <button class="btn-login" type="submit">Sign in</button>
+      </form>
+      <div class="register">
+        <a href="{{ path('security_signup') }}">You don't have an account yet ?</a>
+      </div>
     </div>
-
-    <div class="form-label-group">
-        <input type="password" id="password" name="_password" class="form-control" placeholder="Password" required>
-        <label for="password">Password</label>
-    </div>
-
-    <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
+  </div>
 </body>
+
 </html>

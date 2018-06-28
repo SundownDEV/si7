@@ -1,26 +1,39 @@
 <!doctype html>
 <html lang="{{ app.request.locale }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>{% block title %}Login{% endblock %}</title>
-
-    {% block stylesheets %}
-        <!-- Custom styles for this template -->
-    {% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Stellar - Sign Up{% endblock %}</title>
+  <link rel="icon" type="image/png" href="/favicon.png"> 
+  {% block stylesheet %}
+  <link rel="stylesheet" href="assets/css/styles.css"> 
+  {% endblock %}
 </head>
 
-<body class="text-center">
-{{ form_start(form) }}
-{{ form_row(form.fullName) }}
-{{ form_row(form.email) }}
-{{ form_row(form.password.first) }}
-{{ form_row(form.password.second) }}
-
-<button type="submit">Register!</button>
-{{ form_end(form) }}
+<body>
+  <div class="register-page">
+    <div class="container">
+      <div class="heading-login">
+        <a href="{{ path('default_index') }}">
+          <img class="logo" src="assets/img/logo-white.png" alt="logo">
+          <h1 class="name">Stellar</h1>
+        </a>
+      </div>
+      {{ form_start(form) }}
+        {{ form_row(form.fullName) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
+        <button type="submit" class="btn-login">Sign up</button>
+        <div class="register">
+          <a href="{{ path('security_login') }}">Already have an account ?</a>
+        </div>
+      <div class="ahouiouioui">
+      {{ form_end(form) }}
+      </div>
+    </div>
+  </div> 
 </body>
+
 </html>
