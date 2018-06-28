@@ -3,10 +3,21 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Application\ApiController;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
  * @ORM\Table("yAvL3mMr9U")
+ *
+ * @ApiResource(
+ *     attributes={"access_control"="is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')"},
+ *     collectionOperations={
+ *         "get"={"method"="GET"},
+ *         "post"={"method"="POST"},
+ *     },
+ *     itemOperations={"get"}
+ * )
  */
 class Message
 {
@@ -18,12 +29,6 @@ class Message
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="messages")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -33,21 +38,14 @@ class Message
      */
     private $date;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getContent(): ?string
