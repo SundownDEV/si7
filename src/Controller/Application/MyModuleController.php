@@ -28,9 +28,9 @@ class MyModuleController extends Controller
     }
 
     /**
-     * @Route("/new", name="new", methods="GET|POST")
+     * @Route("/order", name="new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function order(Request $request): Response
     {
         $module = new Module();
         $form = $this->createForm(Module2Type::class, $module);

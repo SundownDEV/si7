@@ -1,0 +1,36 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Gérer les tickets{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Objet</th>
+                <th>Utilisateur</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.object }}</td>
+                <td>{{ ticket.user }}</td>
+                <td>{{ ticket.message }}</td>
+                <td>{{ ticket.status ? 'Ouvert' : 'Fermé' }}</td>
+                <td>
+                    <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}" class="btn btn-primary">Afficher</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

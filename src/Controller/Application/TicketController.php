@@ -8,8 +8,10 @@ use App\Repository\TicketRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * @Route("/app/ticket", name="app_ticket_")
@@ -18,12 +20,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class TicketController extends Controller
 {
     /**
+     * @Route("/me", name="my_tickets", methods="GET")
+     */
+    public function myTickets(TicketRepository $ticketRepository): Response
+    {
+        return $this->render('app/ticket/my_tickets.html.twig', [
+            'tickets' => $ticketRepository->findBy(['user' => $this->getUser()->getId()], ['status' => 'DESC', 'id' => 'DESC'])
+        ]);
+    }
+
+    /**
      * @Route("/", name="index", methods="GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function index(TicketRepository $ticketRepository): Response
     {
         return $this->render('app/ticket/index.html.twig', [
-            'tickets' => $ticketRepository->findBy(['user' => $this->getUser()->getId()], ['status' => 'DESC'])
+            'tickets' => $ticketRepository->findBy([], ['status' => 'DESC', 'id' => 'DESC'])
         ]);
     }
 
@@ -44,7 +57,7 @@ class TicketController extends Controller
             $em->persist($ticket);
             $em->flush();
 
-            return $this->redirectToRoute('app_ticket_index');
+            return $this->redirectToRoute('app_ticket_my_tickets');
         }
 
         return $this->render('app/ticket/new.html.twig', [
@@ -56,8 +69,14 @@ class TicketController extends Controller
     /**
      * @Route("/{id}", name="show", methods="GET")
      */
-    public function show(Ticket $ticket): Response
+    public function show(Ticket $ticket, AuthorizationCheckerInterface $authChecker): Response
     {
+        if (!$authChecker->isGranted('ROLE_ADMIN')) {
+            if ($ticket->getUser() != $this->getUser()) {
+                throw new NotFoundHttpException();
+            }
+        }
+
         return $this->render('app/ticket/show.html.twig', ['ticket' => $ticket]);
     }
 
@@ -94,6 +113,6 @@ class TicketController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('app_ticket_index');
+        return $this->redirectToRoute('app_ticket_my_tickets');
     }
 }
