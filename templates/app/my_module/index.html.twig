@@ -1,0 +1,34 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Mes modules{% endblock %}
+
+{% block headBtn %}<a href="{{ path('app_my_modules_new') }}" class="btn btn-primary btn-block">Commander un module</a>{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Date de mise en service</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.id }}</td>
+                <td>{{ module.type }}</td>
+                <td>{{ module.CreationDate ? module.CreationDate|localizeddate('full', 'none', 'fr') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_my_modules_edit', {'id': module.id}) }}" class="btn btn-primary">Monitorer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

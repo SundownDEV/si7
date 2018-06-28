@@ -67,39 +67,39 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label">Home</li>
-                        <li {% if menu == 'dashboard' %}class="active"{% endif %}>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Dashboard</span></a>
+                        <li>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-tachometer-alt"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
 
                         <li class="nav-label">Mes modules</li>
-                        <li {% if menu == 'modules' %}class="active"{% endif %}>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer mes modules</span></a>
+                        <li>
+                            <a href="{{ path('app_my_modules_index') }}"><i class="fa fa-warehouse"></i><span class="hide-menu">Gérer mes modules</span></a>
                         </li>
                         <li>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Commander un module</span></a>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-shopping-cart"></i><span class="hide-menu">Commander un module</span></a>
                         </li>
                         <li>
-                            <a href="{{ path('app_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Facturation</span></a>
+                            <a href="{{ path('app_index') }}"><i class="fa fa-file-invoice"></i><span class="hide-menu">Facturation</span></a>
                         </li>
 
                         <li class="nav-label">Assistance</li>
                         <li>
-                            <a href="{{ path('app_ticket_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Mes tickets</span></a>
+                            <a href="{{ path('app_ticket_index') }}"><i class="fa fa-life-ring"></i><span class="hide-menu">Mes tickets</span></a>
                         </li>
                         <li>
-                            <a href="{{ path('app_ticket_new') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Créer un ticket</span></a>
+                            <a href="{{ path('app_ticket_new') }}"><i class="fa fa-plus-square"></i><span class="hide-menu">Créer un ticket</span></a>
                         </li>
 
                         {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-label">Administration</li>
-                            <li {% if menu == 'admin_articles' %}class="active"{% endif %}>
-                                <a href="{{ path('app_article_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les articles</span></a>
+                            <li>
+                                <a href="{{ path('app_article_index') }}"><i class="fa fa-newspaper"></i><span class="hide-menu">Gérer les articles</span></a>
                             </li>
                             <li>
-                                <a href="{{ path('app_module_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les modules</span></a>
+                                <a href="{{ path('app_module_index') }}"><i class="fa fa-warehouse"></i><span class="hide-menu">Gérer les modules</span></a>
                             </li>
                             <li>
-                                <a href="{{ path('app_ticket_index') }}"><i class="fa fa-envelope"></i><span class="hide-menu">Gérer les tickets</span></a>
+                                <a href="{{ path('app_ticket_index') }}"><i class="fa fa-users"></i><span class="hide-menu">Gérer les tickets</span></a>
                             </li>
                         {% endif %}
                     </ul>

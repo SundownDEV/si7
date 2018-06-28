@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+{% extends 'app/base.html.twig' %}
 
-<title>Module</title>
+{% block PageTitle %}Monitoring du module #{{ module.id }}{% endblock %}
 
 {% block body %}
     <h1>Module</h1>
@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ module.date ? module.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ module.creationDate ? module.creationDate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Temperature</th>
@@ -33,10 +33,4 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('module_index') }}">back to list</a>
-
-    <a href="{{ path('module_edit', {'id': module.id}) }}">edit</a>
-
-    {{ include('module/_delete_form.html.twig') }}
 {% endblock %}

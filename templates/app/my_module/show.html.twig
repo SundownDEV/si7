@@ -1,0 +1,36 @@
+{% extends 'app/base.html.twig' %}
+
+{% block PageTitle %}Monitoring du module #{{ module.id }}{% endblock %}
+
+{% block body %}
+    <h1>Module</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ module.id }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ module.creationDate ? module.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Temperature</th>
+            <td>{{ module.temperature }}</td>
+        </tr>
+        <tr>
+            <th>Oxygen</th>
+            <td>{{ module.oxygen }}</td>
+        </tr>
+        <tr>
+            <th>Energy</th>
+            <td>{{ module.energy }}</td>
+        </tr>
+        <tr>
+            <th>CreationDate</th>
+            <td>{{ module.CreationDate ? module.CreationDate|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
