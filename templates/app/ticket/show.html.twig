@@ -9,6 +9,12 @@
                 <th>Object</th>
                 <td>{{ ticket.object }}</td>
             </tr>
+            {% if ticket.user.id != app.user.id %}
+            <tr>
+                <th>Utilisateur</th>
+                <td>{{ ticket.user }}</td>
+            </tr>
+            {% endif %}
             <tr>
                 <th>Message</th>
                 <td>{{ ticket.message }}</td>
@@ -20,24 +26,34 @@
         </tbody>
     </table>
 
-    {% if ticket.status == true %}
+    {% if ticket.status == true and ticket.user.id == app.user.id %}
         <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}" class="btn btn-primary">Modifier</a>
+    {% endif %}
 
+    {% if ticket.status == true %}
         <hr>
 
         {{ include('app/ticket/_delete_form.html.twig') }}
     {% endif %}
 
+    {% if app.user.roles == ['ROLE_USER'] %}
     <div class="card">
         <div class="card-body">
             Soyez gentils avec les admins.
         </div>
     </div>
+    {% endif %}
 
     <div class="card">
         <div class="card-body">
-            <h4>John Admin à répondu le jeudi 28 juin 2018</h4>
-            <p>oui</p>
+            <form action="#" method="get">
+                <div class="form-group">
+                    <label for="message">Répondre</label>
+                    <textarea name="message" class="form-control" id="message" cols="30" rows="10"></textarea>
+                </div>
+
+                <button class="btn btn-primary">Envoyer</button>
+            </form>
         </div>
     </div>
 {% endblock %}
