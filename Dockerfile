@@ -55,11 +55,6 @@ COPY ./ .
 RUN mkdir -p var/cache var/logs var/sessions \
     #&& composer install --prefer-dist --no-dev --no-scripts --no-progress --no-suggest --classmap-authoritative --no-interaction \
     && composer install \
-	&& chown -R www-data var
-
-# quick fix for manifest.json bug
-#RUN mkdir -p ./public/build/ \
-#    && echo "{}" > ./public/build/manifest.json
-
-RUN mkdir -p ./public/uploads
-RUN chmod -R 777 ./public/uploads
+	&& chown -R www-data var \
+	&& mkdir -p ./public/uploads \
+	&& chmod -R 777 ./public/uploads
