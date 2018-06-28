@@ -12,11 +12,11 @@ xhr.onload = function() {
 		console.log(maskey);
 		chat.innerHTML = "";
 		for (let i = 0; i < maskey.length ; i++) {
-			chat.innerHTML += '<li class="msg-chat"><span class="username-chat">'+maskey[i].user+'</span><span class="message-chat">'+maskey[i].content+'</span></li>'
+			chat.innerHTML += '<li class="msg-chat"><span class="username-chat">'+maskey[i].user+'</span><span class="message-chat">'+maskey[i].content+'</span>'
 		}
-    }
-    else {
-        alert('Request failed.  Returned status of ' + xhr.status);
+		var chatWindow = document.querySelector('.messages-chat');
+		var xH = chatWindow.scrollHeight; 
+		chatWindow.scrollTo(0, xH);
     }
 };
 xhr.send();
@@ -31,15 +31,15 @@ messageInput.addEventListener('keydown',function(event){
 // post message
 function SendMess() {
 	console.log('lecul');
-	let userName = userNameInput.value;
 	let message = messageInput.value;
-	console.log(userName);
-	console.log(message);
-	userNameInput.value = "";
+	let event = new Date();
+	let jsonDate = event.toJSON();
 	messageInput.value = "";
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.open("POST", "http://localhost:3000/oui", true);
-	  xhttp.setRequestHeader("Content-type", "application/json");
-	  xhttp.send(userName);
+    xhr = new XMLHttpRequest();
+	xhr.open('POST', 'http://localhost:8000/api/messages');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	message = JSON.stringify({content: message,date: jsonDate });
+	xhr.send(message);
 	GetMess();
 }
+
