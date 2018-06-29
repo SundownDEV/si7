@@ -102,7 +102,7 @@ CREATE TABLE `HlgdEoz7Sd` (
 
 LOCK TABLES `HlgdEoz7Sd` WRITE;
 /*!40000 ALTER TABLE `HlgdEoz7Sd` DISABLE KEYS */;
-INSERT INTO `HlgdEoz7Sd` VALUES (3,'John Admin','admin@stellar.com','$2y$13$jYlZ7o6CSIhKuUwOnW2OCeG8qVj0hc/y4.Hto6Q/FmQA9dLJUGsGe','[\"ROLE_ADMIN\"]'),(4,'John User','user@stellar.com','$2y$13$07eqaOA4sb022tt1VyILR.MndTfnHT89PsYG.mvTM9NztLUCMzlla','[\"ROLE_USER\"]'),(5,'allo oui','allo@allo.com','$2y$13$jiWeFkaGTcbOBjwJC2R1Y.EMjzEmlRvZN8lakDQ51NgGBL6iq.RkS','[\"ROLE_USER\"]');
+INSERT INTO `HlgdEoz7Sd` VALUES (3,'John Admin','admin@stellar.com','$2y$13$jYlZ7o6CSIhKuUwOnW2OCeG8qVj0hc/y4.Hto6Q/FmQA9dLJUGsGe','[\"ROLE_ADMIN\"]'),(4,'John User','user@stellar.com','$2y$13$07eqaOA4sb022tt1VyILR.MndTfnHT89PsYG.mvTM9NztLUCMzlla','[\"ROLE_USER\"]');
 /*!40000 ALTER TABLE `HlgdEoz7Sd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +186,7 @@ CREATE TABLE `xfHQzAsCeM` (
 
 LOCK TABLES `xfHQzAsCeM` WRITE;
 /*!40000 ALTER TABLE `xfHQzAsCeM` DISABLE KEYS */;
-INSERT INTO `xfHQzAsCeM` VALUES (1,'Module SoloQ','5555bd953ac2a9ac9179244f24299a4e.png'),(2,'Module Familial','3e1489f0cce58153585de97ed5e66ff1.png');
+INSERT INTO `xfHQzAsCeM` VALUES (1,'Astra 204, Module SoloQ','5555bd953ac2a9ac9179244f24299a4e.png'),(2,'Astra 106, Module Familial','3e1489f0cce58153585de97ed5e66ff1.png');
 /*!40000 ALTER TABLE `xfHQzAsCeM` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +212,7 @@ CREATE TABLE `yAvL3mMr9U` (
 
 LOCK TABLES `yAvL3mMr9U` WRITE;
 /*!40000 ALTER TABLE `yAvL3mMr9U` DISABLE KEYS */;
-INSERT INTO `yAvL3mMr9U` VALUES (8,'string','2018-06-28 15:33:42',''),(9,'string','2018-06-28 15:33:42',''),(10,'string','2018-06-28 15:33:42',''),(11,'string','2018-06-28 15:33:42',''),(12,'string','2018-06-28 15:33:42',''),(13,'string','2018-06-28 15:33:42',''),(14,'string','2018-06-28 16:03:43','John Admin'),(15,'string','2018-06-28 16:03:43','John Admin'),(16,'string','2018-06-28 16:03:43','John Admin'),(17,'string','2018-06-28 16:03:43','tezgz'),(18,'string','2018-06-28 16:08:45','John Admin'),(19,'oui','2018-06-28 23:33:10','John Admin'),(20,'haha','2018-06-28 23:33:19','John Admin');
+INSERT INTO `yAvL3mMr9U` VALUES (19,'oui','2018-06-28 23:33:10','John Admin'),(20,'haha','2018-06-28 23:33:19','John Admin');
 /*!40000 ALTER TABLE `yAvL3mMr9U` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -225,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-28 23:50:53
+-- Dump completed on 2018-06-29 10:21:54
